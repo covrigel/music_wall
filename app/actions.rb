@@ -24,7 +24,9 @@ post '/songs' do
     link: params[:link],
     author:  params[:author]
   )
-  @song.save
+  if @song.save
     redirect '/songs'
-    # erb :'songs/new'
+  else 
+    erb :'songs/new'
+  end
 end

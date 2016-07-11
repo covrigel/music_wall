@@ -1,18 +1,37 @@
+<% if @song && @song.errors.any? %>
+  <div>
+    <strong>There are issues with the details you are submitting</strong>
+    <ul>
+      <% @song.errors.full_messages.each do |message| %>
+        <% if message == "Link can't be blank"%>
+          <li><%= message %></li>
+          <% break %>
+        <% else %>
+            <li><%= message %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<%end%>
+
+<h1>Post your song</h1>
+<hr/>
+
 <form method="post" action="/songs">
 
   <div>
     <label>Author:</label>
-    <input type="text" name="author">
+    <input type="text" name="author" value="<%= @song && @song.author %>">
   </div>
 
   <div>
     <label>Title:</label>
-    <input type="text" name="title">
+    <input type="text" name="title" value="<%= @song && @song.title %>">
   </div>
 
   <div>
     <label>Link:</label>
-    <input type="text" name="link">
+    <input type="text" name="link" value="<%= @song && @song.link %>">
   </div>
 
   <div>
