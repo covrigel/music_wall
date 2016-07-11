@@ -4,5 +4,27 @@ get '/' do
 end
 
 get '/songs' do
+  @songs = Song.all
   erb :'songs/index'
+end
+
+get '/songs/new' do
+  @song = Song.new
+  erb :'songs/new'
+end
+
+get '/songs/:id' do
+  @song = Song.find params[:id]
+  erb :'songs/show'
+end
+
+post '/songs' do
+  @song = Song.new(
+    title:   params[:title],
+    link: params[:link],
+    author:  params[:author]
+  )
+  @song.save
+    redirect '/songs'
+    # erb :'songs/new'
 end
