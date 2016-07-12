@@ -10,7 +10,8 @@ end
 
 get '/songs/new' do
   @song = Song.new
-  erb :'songs/new'
+  
+  erb :'songs/new', :layout=>:layout
 end
 
 get '/songs/:id' do

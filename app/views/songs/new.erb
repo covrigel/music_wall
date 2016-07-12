@@ -1,3 +1,6 @@
+<link href="css/creative.min.css" rel="stylesheet">
+
+
 <% if @song && @song.errors.any? %>
   <div>
     <strong>There are issues with the details you are submitting</strong>
@@ -13,6 +16,8 @@
     </ul>
   </div>
 <%end%>
+
+<div id="song">
 
 <h1>Post your song</h1>
 <hr/>
@@ -39,3 +44,4 @@
   </div>
 
 </form>
+</div>
